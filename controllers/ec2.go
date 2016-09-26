@@ -5,20 +5,20 @@ import (
         "github.com/lenfree/awsLaCapa/models"
 )
 
-type IAMController struct {
+type EC2Controller struct {
         beego.Controller
 }
 
 // @Title GetAll
-// @Description Return all IAM users
-// @Success 200 {object} models.IAMUsers
+// @Description Return all EC2 instances
+// @Success 200 {object} models.EC2Reservations
 // @router / [get]
-func (c *IAMController) GetAll() {
-        IAMUsers, err := models.IAMUserList()
+func (c *EC2Controller) GetAll() {
+        EC2Instances, err := models.EC2InstanceList()
         if err != nil {
                 c.Data["json"] = err.Error()
         } else {
-                c.Data["json"] = IAMUsers
+                c.Data["json"] = EC2Instances
         }
         c.ServeJSON()
 }
